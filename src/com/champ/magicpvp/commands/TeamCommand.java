@@ -6,12 +6,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.champ.magicpvp.HCF;
+import com.champ.magicpvp.teams.Team;
+import com.champ.magicpvp.teams.TeamManager;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Team implements CommandExecutor {
+public class TeamCommand implements CommandExecutor {
 	
 	HCF hcf;
+	
+	private TeamManager tm;
+	private Team team;
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String name, String[] args) {
@@ -26,20 +31,42 @@ public class Team implements CommandExecutor {
 				player.sendMessage(ChatColor.AQUA + "/team display <name>");
 				return true;
 			}
+			
 			else if(args[0].equals("create")){
+				
 				if(args.length == 1){
 					player.sendMessage(ChatColor.RED + "Please name your team");
 					return true;
 					
-				} else if (args.length == 3){
+				}
+				
+				else if (args.length == 3){
 					
 					player.sendMessage(ChatColor.RED + "Your team can only have one name");
 					return true;
-				} else {
+				} 
+				
+				else {
 					
 					String teamName = args[2];
 					
-					hcf.generateConfig(teamName, player.getUniqueId());
+					//TODO: Test Create Team Command. (Fingers Crossed :D)
+					tm.createTeam(player, teamName);
+					
+				}
+			} 
+			
+			else if (args[0].equals("join")){
+				
+				if(args.length == 1){
+					
+					player.sendMessage(ChatColor.RED + "Please choose a Team name");
+					
+					
+				} else if (args.length == 2) {
+					
+					//TODO: Test Join Team Command
+					team.addMember(player, "member");
 					
 				}
 			}
