@@ -19,7 +19,7 @@ public class Hologram implements CommandExecutor {
 		Player player = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("holo")){
 			if (args.length == 0){
-				player.sendMessage(ChatColor.GREEN + "/holo set <name>");
+				player.sendMessage(ChatColor.YELLOW + "/holo set <name>");
 			} 
 			
 			if (args[0].equals("set")){

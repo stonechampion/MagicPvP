@@ -17,8 +17,7 @@ import com.champ.magicpvp.teams.TeamManager;
 public class HCFPlugin extends JavaPlugin {
 	
 	
-	TeamManager tm;
-	Team team;
+	
 	
 	public static HCFPlugin instance;
 	
@@ -32,7 +31,7 @@ public class HCFPlugin extends JavaPlugin {
 		
 		
 		try {
-			tm.getInstance().load();
+			TeamManager.getInstance().load();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,7 +43,7 @@ public class HCFPlugin extends JavaPlugin {
 	
 	public void onDisable(){
 		try {
-			tm.getInstance().save();
+			TeamManager.getInstance().save();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

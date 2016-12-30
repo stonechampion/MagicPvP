@@ -13,10 +13,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class TeamCommand implements CommandExecutor {
 	
-	HCF hcf;
 	
-	private TeamManager tm;
-	private Team team;
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String name, String[] args) {
@@ -50,9 +47,9 @@ public class TeamCommand implements CommandExecutor {
 					
 					String teamName = args[2];
 					
-					if (tm.doesTeamExist(teamName)){
+					if (TeamManager.getInstance().doesTeamExist(teamName)){
 						//TODO: Test Create Team Command. (Fingers Crossed :D)
-						tm.createTeam(player, teamName);
+						TeamManager.getInstance().createTeam(player, teamName);
 					} else {
 						
 						player.sendMessage(ChatColor.RED + "That team does not exist.");
@@ -76,10 +73,10 @@ public class TeamCommand implements CommandExecutor {
 					
 					String teamJoinName = args[2];
 					
-					if (tm.doesTeamExist(teamJoinName)){
+					if (TeamManager.getInstance().doesTeamExist(teamJoinName)){
 						
 						//TODO: Test Join Team Command
-						team.addMember(player, "member");
+						Team.getInstance().addMember(player, "member");
 						player.sendMessage(ChatColor.GREEN + "You have joined the team " + teamJoinName);
 						
 					} else {

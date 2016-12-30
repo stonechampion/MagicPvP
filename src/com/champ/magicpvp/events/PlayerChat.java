@@ -12,17 +12,17 @@ import com.champ.magicpvp.teams.TeamManager;
 
 public class PlayerChat implements Listener {
 	
-	TeamManager tm;
+	
 	
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event){
 		
 		Player player = event.getPlayer();
 		
-		if(tm.isInTeam(player)){
-			Team team = new Team();
+		if(TeamManager.getInstance().isInTeam(player)){
 			
-			event.getMessage().format(ChatColor.GRAY + "[" + team.getInstance().getName() + "]" + " " + player.getName(), event.getMessage());
+			
+			event.getMessage().format(ChatColor.GRAY + "[" + TeamManager.getInstance().getTeam(player) + "]" + " " + player.getName(), event.getMessage());
 			
 		} else {
 			
