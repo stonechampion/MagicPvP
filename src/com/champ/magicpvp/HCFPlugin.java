@@ -50,7 +50,7 @@ public class HCFPlugin extends JavaPlugin {
 		}
 	}
 	
-	public HCFPlugin getInstance(){
+	public static HCFPlugin getInstance(){
 		return instance;
 	}
 
