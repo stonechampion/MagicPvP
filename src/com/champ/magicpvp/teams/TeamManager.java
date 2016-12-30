@@ -89,6 +89,14 @@ public class TeamManager {
 	    return teams.keySet();
 	}
 	
+	public boolean doesTeamExist(String name){
+		if(teams.containsKey(name)){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	public void save() throws IOException {
 	    File file = new File("plugins/MagicPvP/teams.txt");
 	    

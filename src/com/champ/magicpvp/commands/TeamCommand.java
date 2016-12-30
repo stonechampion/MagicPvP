@@ -50,8 +50,17 @@ public class TeamCommand implements CommandExecutor {
 					
 					String teamName = args[2];
 					
-					//TODO: Test Create Team Command. (Fingers Crossed :D)
-					tm.createTeam(player, teamName);
+					if (tm.doesTeamExist(teamName)){
+						//TODO: Test Create Team Command. (Fingers Crossed :D)
+						tm.createTeam(player, teamName);
+					} else {
+						
+						player.sendMessage(ChatColor.RED + "That team does not exist.");
+						return true;
+	
+					}
+					
+					
 					
 				}
 			} 
@@ -65,8 +74,23 @@ public class TeamCommand implements CommandExecutor {
 					
 				} else if (args.length == 2) {
 					
-					//TODO: Test Join Team Command
-					team.addMember(player, "member");
+					String teamJoinName = args[2];
+					
+					if (tm.doesTeamExist(teamJoinName)){
+						
+						//TODO: Test Join Team Command
+						team.addMember(player, "member");
+						player.sendMessage(ChatColor.GREEN + "You have joined the team " + teamJoinName);
+						
+					} else {
+						
+						player.sendMessage("That team does not exist!");
+						return true;
+						
+					}
+					
+					
+					
 					
 				}
 			}
